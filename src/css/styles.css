@@ -56,12 +56,12 @@ h1 {
     font-family: 'Jockey One', sans-serif;
 }
 
-
+/*
 .navbar ul {
-  list-style-type: none; /* Removes the bullet points */
+  list-style-type: none; 
   padding: 0;
   margin: 0;
-  display: flex; /* Align items horizontally */
+  display: flex; 
 }
 
 .navbar ul li {
@@ -69,21 +69,91 @@ h1 {
   margin: 0; 
 }
 
-/* Style for the links */
 .navbar ul li a {
   display: block;
   padding: 2px 5px;
   text-decoration: none;
   color: black;
-
   margin: 0 1px; 
+}
+*/
+
+.navbar ul {
+  list-style: none;
+  text-align: center;
+}
+.navbar ul li {
+  display: inline-block;
+}
+.navbar ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: 800;
+  margin: 0 10px;
+}
+.navbar ul li a,
+.navbar ul li a:after,
+.navbar ul li a:before {
+  transition: all .5s;
+}
+
+
+/* SHIFT */
+.navbar ul li a {
+  position:relative;
+  z-index: 1;
+}
+.navbar ul li a:hover {
+  color: #61A0AF;
+}
+.navbar ul li a:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  content: '.';
+  color: transparent;
+  background: #FFF7AE;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+.navbar ul li a:hover:after {
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+}
+
+
+
+/* Keyframes */
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
 }
 
 
 
 
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   /* Adjustments for small screens */
   .navbar {
       width: 100%;
@@ -121,7 +191,7 @@ h1 {
   opacity: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .hamburger {
       display: block; 
   }
@@ -279,6 +349,7 @@ h1 {
 .services-content {
     margin: 0 auto;
     max-width: 800px; /* Adjust the max-width as necessary */
+    margin-bottom: 50px;
 }
 
 .services-content h2 {
@@ -469,4 +540,89 @@ button {
 
 button:hover {
   background-color: #264e58;
+}
+
+
+
+/* Scoped Resets */
+.slider * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Slider Heading */
+.slider-heading {
+  text-align: center;
+  margin-bottom: 5000px; /* Adjust the space between the title and the slider as needed */
+}
+
+/* Slider Container */
+.slider {
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  overflow: hidden;
+  position: relative; /* Positions prev and next buttons absolutely within this container */
+}
+
+/* Slide */
+.slider__slide {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  width: 100%; /* Ensures slides are full width */
+}
+
+/* Image */
+.slider__slide img {
+  width: 100%;
+  height: auto;
+}
+
+/* Navigation Buttons */
+.slider__button {
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  z-index: 10; /* Ensures buttons are above slides */
+}
+
+.slider__button--prev {
+  left: 10px; /* Adjust as needed for spacing from the edge */
+}
+
+.slider__button--next {
+  right: 10px; /* Adjust as needed for spacing from the edge */
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal; 
+}
+
+.header-container h2 {
+  color: white;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .slider {
+    display: none;
+  }
+
+  .header-container h2{
+    display: none;
+  }
 }
